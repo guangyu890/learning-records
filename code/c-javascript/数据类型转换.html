@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数据类型转换</title>
+    <style>
+      p {
+        width: 5%;
+        margin: 0 auto;
+        padding: 0.625rem;
+        border-radius: 0.5rem;
+        background: #ededed;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <p></p>
+    <script>
+      let para = document.querySelector("p")
+      para.addEventListener("click", updateName)
+      function updateName() {
+        let name = prompt("请输入名字: ")
+        para.textContent = `玩家1：${name}`
+      }
+    </script>
+  </body>
+</html>
