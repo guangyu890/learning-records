@@ -148,6 +148,8 @@ font: intalic normal bold normal 3rem / 1.6 Helvetica Arial, sans-serif;
   ```css
   text-shadow: 4px 4px 5px #eee;  
   
+  ```
+
 //第一个值表示阴影与原始文本的水平偏移，可以使用其他CSS单位，但是使用px比较适合，这个值必须指定。
   //第二个值表示阴影与原始文本的垂直偏移；效果基本上就像水平偏移，除了它向上或向下移动阴影，而不是向左或向右。这个值必须指定。
   //模糊半径。更高的值意味着阴影分散得更广泛。默认为0，表示没有模糊。
@@ -203,30 +205,95 @@ font: intalic normal bold normal 3rem / 1.6 Helvetica Arial, sans-serif;
   }
   ```
 
-  
 
-## 四、背景属性
+## 四、背景
 
-## 五、内外边距
+背景属性语法简写。background: [background-color] | [background-image] | [background-position]  [/background-size] | [background-repeat] | [background-attachment] | [background-clip] | [background-origin],...。
 
-* 内边距（padding）。
-* 外边距(margin)。
+* 对应的相关属性。
 
-## 六、边框属性
+  * background-size。可能设置长度或百分比值来调整图像的大小以适应背景。也可以使用关键字。
+    * cover。浏览器将使图像足够大，使它完全覆盖了盒子区，同时仍然保持其高宽比。这种情况下，有些图像可能会跳出盒子外。
+    * contain。浏览器将使图像的大小适盒子内，这种情况下，如果图像的长宽比与盒子的长宽比不同，则可能在图像的任何一边或顶部和底部出现间隙。
 
+* background-position。默认的背景位置是(0,0)。框的左上角是（0,0），框沿着水平（x）和垂直（y）轴定位。或者可以使用top，left, center等关键字。
 
+* background-origin。content-box, padding-box和border-box区域内可以放置背景图片。
 
-## 七、盒子阴影
+* background-clip。背景剪裁属性是从指定的位置开始绘制。
 
-## 八、动画
+  ```css
+  #example {
+    border: 10px;
+    padding: 10px;
+      background: yellow;
+      background-clip: content-box;
+  }
+  ```
 
-## 九、布局
+* gradients。主张使用背景渐变，减少使用背景图片，这有利于提高网页加载速度。渐变分为线性渐变(linear-gradients)和徑向渐变（radial gradients）。
 
-## 十、sass
+  * linear-gradients-向下/向上/向左/向右/对角渐变。语法格式：background-image: linear-gradient(direction, color-stop1, color-stop2, ...)；默认从上至下。
 
-## 十一、命名规范
+    * 从左到右。e.g:
 
-## 十二、CSS规划
+      ```css
+      #grad: {
+      	height: 200px;
+      	background-image: linear-gradient(to right, red, yellow);
+      }
+      ```
+
+    * 对角。指定水平和垂直的起始位置来制作一对角渐变。
+
+      ```css
+      //从左上角开始（到右下角）
+      #grad {
+      	height: 200px;
+      	background-image: linear-gradient(to bottom right, red, yellow);
+      }
+      ```
+
+  * radial-gradients-由它们的中心定义。
+
+    * 使用角度。语法： background-image: linear-gradient(angle, color-stop1, color-stop2);角度是指水平线和渐变线之间的角度，逆时针方向计算，0deg将创建一个从下到上的渐变。90deg将创建一个从左到右的渐变。
+
+      ```
+      #grad {
+      	background-image: linear-gradient(-90deg, red, yello)
+      }
+      ```
+
+  * 不均匀渐变百分比。百分比表示指定的颜色的标准中心线位置，百分比之间是过渡色，如果百分比位置之间有重叠会失去渐变过渡色。e.g:
+
+    ```css
+    background: linear-gradient(red 10%, green 85%, blue 90%);
+    ```
+
+    * 10%表示红色的颜色中心线在线性渐变方向10%的位置;
+    * 85%表示绿色的颜色中心线在线性渐变方向的85%的位置;
+    * 90%表示蓝色的颜色中心线在线性渐变方向的90%的位置；
+    * 10%到85%是red-green的过渡色，85%-90%是green-blue的过渡色。
+
+* 用逗号隔开每组background的缩写值；
+* 如果有size值，需要紧跟position并且用'/'隔开；
+* 如果有多个背景图片，而其他属性只有一个（如background-repeat），表明所有背景图片应用该属性。
+* background-color只能设置一个。
+* 如果除了背景图像外，还指定了背景颜色，则图像将显示在颜色的顶部。
+
+## 五、边框属性
+
+## 六、盒子阴影
+
+## 七、动画
+
+## 八、布局
+
+## 九、sass
+
+## 十、命名规范
+
+## 十一、CSS规划
 
 
 
